@@ -1,0 +1,40 @@
+{
+  "package_holiday_list": [
+    {
+      "place": "São Paulo",
+      "image": "@drawable/sao_paulo_sp",
+      "days": "2 days",
+      "amount": "R$ 243,99"
+    },
+    {
+      "place": "Belo Horizonte",
+      "image": "@drawable/belo_horizonte_mg",
+      "days": "3 days",
+      "amount": "R$ 421,50"
+    },
+    {
+      "place": "Recife",
+      "image": "@drawable/recife_pe",
+      "days": "4 days",
+      "amount": "R$ 754,20"
+    },
+    {
+      "place": "Rio de Janeiro",
+      "image": "@drawable/rio_de_janeiro_rj",
+      "days": "6 days",
+      "amount": "R$ 532,55"
+    },
+    {
+      "place": "Salvador",
+      "image": "@drawable/salvador_ba",
+      "days": "5 days",
+      "amount": "R$ 899,99"
+    },
+    {
+      "place": "Foz do Iguaçu",
+      "image": "@drawable/foz_do_iguacu_pr",
+      "days": "1 dia",
+      "amount": "R$ 289,90"
+    }
+  ]
+}

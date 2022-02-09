@@ -5,66 +5,85 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/item_package_holiday_image"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_package_holiday_cardview"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:scaleType="centerCrop"
-        tools:src="@sample/package_holiday_list.json/package_holiday_list/image"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/item_package_holiday_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:ignore="NotSibling">
 
-    <TextView
-        android:id="@+id/item_package_holiday_place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@android:drawable/screen_background_dark_transparent"
-        android:padding="8dp"
-        tools:text="@sample/package_holiday_list.json/package_holiday_list/place"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/item_package_holiday_image"
-        app:layout_constraintEnd_toEndOf="@id/item_package_holiday_image"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/item_package_holiday_image"
-        app:layout_constraintTop_toTopOf="@id/item_package_holiday_image"
-        app:layout_constraintVertical_bias="1.0" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/item_package_holiday_divider"
-        android:layout_width="0dp"
-        android:layout_height="3dp"
-        android:background="@android:color/holo_orange_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_package_holiday_image" />
+            <ImageView
+                android:id="@+id/item_package_holiday_image"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:src="@sample/package_holiday_list.json/package_holiday_list/image" />
 
-    <TextView
-        android:id="@+id/item_package_holiday_days"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        tools:text="@sample/package_holiday_list.json/package_holiday_list/days"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_package_holiday_divider" />
+            <TextView
+                android:id="@+id/item_package_holiday_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@android:drawable/screen_background_dark_transparent"
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/item_package_holiday_image"
+                app:layout_constraintEnd_toEndOf="@id/item_package_holiday_image"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/item_package_holiday_image"
+                app:layout_constraintTop_toTopOf="@id/item_package_holiday_image"
+                app:layout_constraintVertical_bias="1.0"
+                tools:text="@sample/package_holiday_list.json/package_holiday_list/place" />
 
-    <TextView
-        android:id="@+id/item_package_holiday_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="@sample/package_holiday_list.json/package_holiday_list/amount"
-        android:textSize="20sp"
-        android:textColor="@android:color/holo_green_dark"
-        app:layout_constraintStart_toStartOf="@id/item_package_holiday_days"
-        app:layout_constraintTop_toBottomOf="@id/item_package_holiday_days" />
+            <View
+                android:id="@+id/item_package_holiday_divider"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@android:color/holo_orange_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_package_holiday_image" />
 
+            <TextView
+                android:id="@+id/item_package_holiday_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_package_holiday_divider"
+                tools:text="@sample/package_holiday_list.json/package_holiday_list/days" />
+
+            <TextView
+                android:id="@+id/item_package_holiday_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/item_package_holiday_cardview"
+                app:layout_constraintStart_toStartOf="@id/item_package_holiday_days"
+                app:layout_constraintTop_toBottomOf="@id/item_package_holiday_days"
+                tools:text="@sample/package_holiday_list.json/package_holiday_list/amount" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
