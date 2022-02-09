@@ -45,8 +45,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ListView
+        android:id="@+id/package_holiday_list_listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        tools:listitem="@layout/item_package_holiday"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
