@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.model.PackageHoliday
-import java.math.RoundingMode
 
 class PackageHolidayListAdapter(
     private val context: Context,
@@ -35,12 +34,33 @@ class PackageHolidayListAdapter(
 
         val packageHoliday = packageHolidayList[position]
 
-        val placeView = createdView.findViewById<TextView>(R.id.item_package_holiday_place)
-        val imageView = createdView.findViewById<ImageView>(R.id.item_package_holiday_image)
-        val daysView = createdView.findViewById<TextView>(R.id.item_package_holiday_days)
-        val amountView = createdView.findViewById<TextView>(R.id.item_package_holiday_amount)
+        showPlace(createdView, packageHoliday)
+        showImage(createdView, packageHoliday)
+        showDays(createdView, packageHoliday)
+        showAmount(createdView, packageHoliday)
 
-        placeView.text = packageHoliday.place
+        return createdView
+    }
+
+    private fun showAmount(createdView: View, packageHoliday: PackageHoliday) =
+        createdView.findViewById<TextView>(R.id.item_package_holiday_amount)
+            .apply {
+                this.text = packageHoliday.formattedAmount()
+            }
+
+
+    private fun showDays(createdView: View, packageHoliday: PackageHoliday) =
+        createdView.findViewById<TextView>(R.id.item_package_holiday_days)
+            .apply {
+                this.text = packageHoliday.formattedDays()
+            }
+
+
+    private fun showImage(
+        createdView: View,
+        packageHoliday: PackageHoliday
+    ) {
+        val imageView = createdView.findViewById<ImageView>(R.id.item_package_holiday_image)
         val resources = context.resources
         val identifier = resources.getIdentifier(
             packageHoliday.image,
@@ -49,10 +69,12 @@ class PackageHolidayListAdapter(
         )
         val drawable = resources.getDrawable(identifier, context.theme)
         imageView.setImageDrawable(drawable)
-
-        daysView.text = packageHoliday.formattedDays()
-        amountView.text = packageHoliday.formattedAmount()
-
-        return createdView
     }
+
+    private fun showPlace(createdView: View, packageHoliday: PackageHoliday) =
+        createdView.findViewById<TextView>(R.id.item_package_holiday_place)
+            .apply {
+                this.text = packageHoliday.place
+            }
+
 }
