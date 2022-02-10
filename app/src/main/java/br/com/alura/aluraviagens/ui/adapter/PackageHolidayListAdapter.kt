@@ -1,7 +1,6 @@
 package br.com.alura.aluraviagens.ui.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.model.PackageHoliday
+import br.com.alura.aluraviagens.util.getDrawable
 
 class PackageHolidayListAdapter(
     private val context: Context,
@@ -61,13 +61,7 @@ class PackageHolidayListAdapter(
         packageHoliday: PackageHoliday
     ) {
         val imageView = createdView.findViewById<ImageView>(R.id.item_package_holiday_image)
-        val resources = context.resources
-        val identifier = resources.getIdentifier(
-            packageHoliday.image,
-            Drawable::class.simpleName?.lowercase(),
-            context.packageName
-        )
-        val drawable = resources.getDrawable(identifier, context.theme)
+        val drawable = getDrawable(context, packageHoliday.image)
         imageView.setImageDrawable(drawable)
     }
 
@@ -76,5 +70,4 @@ class PackageHolidayListAdapter(
             .apply {
                 this.text = packageHoliday.place
             }
-
 }
