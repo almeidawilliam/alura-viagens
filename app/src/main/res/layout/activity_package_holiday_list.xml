@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="br.com.alura.aluraviagens.ui.activity.PackageHolidayListActivity">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/package_holiday_list_initial_banner"
         android:layout_width="0dp"
         android:layout_height="120dp"
+        android:contentDescription="@string/initial_banner_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,40 +18,42 @@
         app:srcCompat="@android:color/holo_purple" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/package_holiday_list_specials"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Especiais"
+        android:text="@string/specials"
         android:textColor="@color/white"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/package_holiday_list_initial_banner"
+        app:layout_constraintEnd_toEndOf="@+id/package_holiday_list_initial_banner"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/package_holiday_list_initial_banner"
+        app:layout_constraintTop_toTopOf="@+id/package_holiday_list_initial_banner"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/package_holiday_list_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Brasil"
+        android:text="@string/country"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/package_holiday_list_specials"
+        app:layout_constraintTop_toBottomOf="@+id/package_holiday_list_specials" />
 
     <ListView
         android:id="@+id/package_holiday_list_listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_package_holiday"
+        android:divider="@null"
+        android:dividerHeight="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/package_holiday_list_initial_banner"
+        tools:listitem="@layout/item_package_holiday" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
