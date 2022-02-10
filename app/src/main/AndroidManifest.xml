@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AluraViagens">
         <activity
+            android:name=".ui.activity.PackageHolidaySummaryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.PackageHolidayListActivity"
             android:exported="true">
             <intent-filter>
