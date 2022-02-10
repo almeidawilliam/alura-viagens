@@ -14,6 +14,7 @@ class PackageHolidayListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_package_holiday_list)
+        setTitle("Pacotes")
         val packageHolidayList = findViewById<ListView>(R.id.package_holiday_list_listview)
 
         packageHolidayList.adapter = PackageHolidayListAdapter(this, packageHolidayDAO.list())

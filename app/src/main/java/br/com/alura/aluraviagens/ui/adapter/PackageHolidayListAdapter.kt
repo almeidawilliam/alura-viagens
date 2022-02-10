@@ -50,8 +50,8 @@ class PackageHolidayListAdapter(
         val drawable = resources.getDrawable(identifier, context.theme)
         imageView.setImageDrawable(drawable)
 
-        daysView.text = "${packageHoliday.days} dias"
-        amountView.text = "R$ ${packageHoliday.amount.setScale(2, RoundingMode.CEILING)}"
+        daysView.text = packageHoliday.formattedDays()
+        amountView.text = packageHoliday.formattedAmount()
 
         return createdView
     }
