@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Alura Viagens</string>
-    <string name="specials">Especiais</string>
+    <string name="text_specials">Especiais</string>
     <string name="country">Brasil</string>
-    <string name="initial_banner_content">Banner inicial dos pacotes</string>
+    <string name="description_initial_banner_content">Banner inicial dos pacotes</string>
+    <string name="text_final_amount">Preço final:</string>
+    <string name="text_effectuate_payment">Realizar pagamento</string>
+    <string name="description_image_place">Imagem do local</string>
 </resources>

@@ -3,27 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activity.PackageHolidaySummaryActivity">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/activity_package_holiday_summary_image"
         android:layout_width="0dp"
         android:layout_height="140dp"
+        android:contentDescription="@string/description_image_place"
         android:scaleType="centerCrop"
-        android:src="@drawable/belo_horizonte_mg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/belo_horizonte_mg" />
 
     <TextView
         android:id="@+id/activity_package_holiday_summary_place"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +46,6 @@
         android:layout_marginTop="8dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/activity_package_holiday_summary_amount"
-        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="@+id/activity_package_holiday_summary_days"
         app:layout_constraintTop_toBottomOf="@+id/activity_package_holiday_summary_days"
         tools:text="08/12 - 10/12 de 2017" />
@@ -57,37 +55,31 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:textAlignment="textEnd"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@id/activity_package_holiday_summary_days_range"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/activity_package_holiday_summary_days_range"
-        tools:layout_editor_absoluteX="275dp"
-        tools:layout_editor_absoluteY="213dp"
-        android:textAlignment="textEnd"
         tools:text="R$ 243,99" />
 
     <TextView
         android:id="@+id/activity_package_holiday_summary_text_final_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preço final:"
+        android:text="@string/text_final_amount"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/activity_package_holiday_summary_amount"
-        app:layout_constraintEnd_toEndOf="@id/activity_package_holiday_summary_amount"
-        tools:layout_editor_absoluteX="322dp" />
+        app:layout_constraintEnd_toEndOf="@id/activity_package_holiday_summary_amount" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/activity_package_holiday_summary_effectuate_payment_buttom"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="8dp"
         android:background="@drawable/orange_round_button"
-        android:text="Realizar pagamento"
-        android:textColor="@android:color/white"
+        android:text="@string/text_effectuate_payment"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
