@@ -1,5 +1,6 @@
 package br.com.alura.aluraviagens.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -29,7 +30,27 @@ class PackageHolidaySummaryActivity : AppCompatActivity() {
         showDays(packageHoliday)
         showAmount(packageHoliday)
         showDates(packageHoliday)
+//        configurePaymentButton()
+        val intent = Intent(
+            this@PackageHolidaySummaryActivity,
+            PackageHolidayPaymentActivity::class.java
+        )
+        startActivity(intent)
     }
+
+//    private fun configurePaymentButton() {
+//        val view = findViewById<Button>(R.id.activity_package_holiday_summary_effectuate_payment_button)
+//        view.setOnClickListener {
+//                    View.OnClickListener {
+//                        val intent = Intent(
+//                            this@PackageHolidaySummaryActivity,
+//                            PackageHolidayPaymentActivity::class.java
+//                        )
+//                        startActivity(intent)
+//                    }
+//                }
+//            }
+
 
     private fun showDates(packageHoliday: PackageHoliday) {
         val brazilianFormat = SimpleDateFormat("dd/MM")
