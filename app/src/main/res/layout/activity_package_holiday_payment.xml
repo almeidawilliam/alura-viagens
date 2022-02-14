@@ -7,7 +7,7 @@
     tools:context=".ui.activity.PackageHolidayPaymentActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/activity_package_holiday_payment_orientation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/activity_package_holiday_payment_amount_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -27,28 +27,51 @@
         android:text="Valor da compra:"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/activity_package_holiday_payment_orientation"
         app:layout_goneMarginTop="20dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/activity_package_holiday_payment_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/activity_package_holiday_payment_amount_text"
+        app:layout_constraintTop_toBottomOf="@+id/activity_package_holiday_payment_amount_text"
         tools:text="R$ 421,50" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/activity_package_holiday_payment_credit_card_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxLength="12"
         android:hint="Número do cartão"
         android:inputType="number"
+        android:maxLength="12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toStartOf="@+id/activity_package_holiday_payment_amount"
+        app:layout_constraintTop_toBottomOf="@+id/activity_package_holiday_payment_amount" />
+
+    <EditText
+        android:id="@+id/activity_package_holiday_payment_credit_card_month"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:hint="MM"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@id/activity_package_holiday_payment_credit_card_number"
+        app:layout_constraintTop_toBottomOf="@id/activity_package_holiday_payment_credit_card_number" />
+
+    <EditText
+        android:id="@+id/activity_package_holiday_payment_credit_card_year"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:hint="AA"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@id/activity_package_holiday_payment_credit_card_month"
+        app:layout_constraintTop_toBottomOf="@id/activity_package_holiday_payment_credit_card_number" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
