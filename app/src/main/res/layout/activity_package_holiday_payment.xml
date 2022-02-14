@@ -45,6 +45,7 @@
         android:id="@+id/activity_package_holiday_payment_credit_card_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:hint="Número do cartão"
         android:inputType="number"
         android:maxLength="12"
@@ -60,8 +61,8 @@
         android:inputType="number"
         android:maxLength="2"
         android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="@id/activity_package_holiday_payment_credit_card_number"
-        app:layout_constraintTop_toBottomOf="@id/activity_package_holiday_payment_credit_card_number" />
+        app:layout_constraintBottom_toBottomOf="@id/activity_package_holiday_payment_credit_card_cvc"
+        app:layout_constraintStart_toStartOf="@id/activity_package_holiday_payment_credit_card_number" />
 
     <EditText
         android:id="@+id/activity_package_holiday_payment_credit_card_year"
@@ -71,7 +72,41 @@
         android:inputType="number"
         android:maxLength="2"
         android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@id/activity_package_holiday_payment_credit_card_month"
+        app:layout_constraintBottom_toBottomOf="@id/activity_package_holiday_payment_credit_card_cvc"
+        app:layout_constraintStart_toEndOf="@id/activity_package_holiday_payment_credit_card_month" />
+
+    <EditText
+        android:id="@+id/activity_package_holiday_payment_credit_card_cvc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_cvc_cartao_de_credito"
+        android:hint="CVC"
+        android:inputType="number"
+        android:maxLength="3"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@id/activity_package_holiday_payment_credit_card_number"
         app:layout_constraintTop_toBottomOf="@id/activity_package_holiday_payment_credit_card_number" />
+
+    <EditText
+        android:id="@+id/activity_package_holiday_payment_credit_card_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nome no cartão"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@id/activity_package_holiday_payment_credit_card_number"
+        app:layout_constraintStart_toStartOf="@id/activity_package_holiday_payment_credit_card_number"
+        app:layout_constraintTop_toBottomOf="@id/activity_package_holiday_payment_credit_card_cvc" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/activity_package_holiday_payment_button_proceed_payment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/orange_round_button"
+        android:text="Finalizar compra"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/activity_package_holiday_payment_credit_card_name"
+        app:layout_constraintStart_toStartOf="@+id/activity_package_holiday_payment_credit_card_name"
+        app:layout_constraintTop_toBottomOf="@+id/activity_package_holiday_payment_credit_card_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
