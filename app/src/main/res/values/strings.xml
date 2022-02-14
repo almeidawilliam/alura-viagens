@@ -4,6 +4,15 @@
     <string name="country">Brasil</string>
     <string name="description_initial_banner_content">Banner inicial dos pacotes</string>
     <string name="text_final_amount">Preço final:</string>
-    <string name="text_effectuate_payment">Realizar pagamento</string>
+    <string name="text_proceed_to_payment">Realizar pagamento</string>
     <string name="description_image_place">Imagem do local</string>
+    <string name="credit_card_name_mask">abcdefghijklmnopqrstuvwxyzçABCDEFGHIJKLMNOPQRSTUVWXYZÇ\u0020</string>
+    <string name="text_payment_orientation">Digite as informações do cartão de crédito que você deseja usar para o pagamento</string>
+    <string name="text_payment_amount">Valor da compra:</string>
+    <string name="hint_credit_card_number">Número do cartão</string>
+    <string name="hint_credit_card_month">MM</string>
+    <string name="hint_credit_card_year">AA</string>
+    <string name="hint_credit_card_cvc">CVC</string>
+    <string name="text_effectuate_payment">Finalizar compra</string>
+    <string name="hint_name_on_credit_card">Nome no cartão</string>
 </resources>
