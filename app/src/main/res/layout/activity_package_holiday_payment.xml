@@ -93,6 +93,7 @@
         android:layout_height="wrap_content"
         android:hint="Nome no cartão"
         android:inputType="text"
+        android:digits="abcdefghijklmnopqrstuvwxyzçABCDEFGHIJKLMNOPQRSTUVWXYZÇ "
         app:layout_constraintEnd_toEndOf="@id/activity_package_holiday_payment_credit_card_number"
         app:layout_constraintStart_toStartOf="@id/activity_package_holiday_payment_credit_card_number"
         app:layout_constraintTop_toBottomOf="@id/activity_package_holiday_payment_credit_card_cvc" />
