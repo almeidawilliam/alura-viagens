@@ -15,4 +15,7 @@
     <string name="hint_credit_card_cvc">CVC</string>
     <string name="text_effectuate_payment">Finalizar compra</string>
     <string name="hint_name_on_credit_card">Nome no cartão</string>
+    <string name="text_congratulations">Parabéns!</string>
+    <string name="text_purchase_done">Compra realizada com sucesso :)</string>
+    <string name="text_check_purchase_summary">Confira o resumo da compra:</string>
 </resources>

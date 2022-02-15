@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activity.PurchaseSummaryActivity">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/activity_purchase_summary_initial_banner"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        android:contentDescription="@string/description_initial_banner_content"
         android:src="@android:color/holo_orange_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,16 +21,16 @@
         android:id="@+id/activity_purchase_summary_congratulations_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Parabéns!"
+        android:layout_margin="8dp"
+        android:text="@string/text_congratulations"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_purchase_summary_initial_banner"
+        app:layout_constraintEnd_toEndOf="@+id/activity_purchase_summary_initial_banner"
+        app:layout_constraintStart_toStartOf="@+id/activity_purchase_summary_initial_banner"
+        app:layout_constraintTop_toTopOf="@+id/activity_purchase_summary_initial_banner"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Compra realizada com sucesso :)"
+        android:text="@string/text_purchase_done"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Confira o resumo da compra:"
+        android:text="@string/text_check_purchase_summary"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,18 +62,18 @@
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/description_initial_banner_content"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_purchase_summary_check_result_text"
-        app:srcCompat="@drawable/sao_paulo_sp" />
+        tools:srcCompat="@drawable/sao_paulo_sp" />
 
     <TextView
         android:id="@+id/activity_purchase_summary_place_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_purchase_summary_place_image"
         tools:text="São Paulo" />
@@ -94,5 +94,5 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/activity_purchase_summary_date_period"
         app:layout_constraintTop_toBottomOf="@+id/activity_purchase_summary_date_period"
-        tools:text="R$243,99" />
+        tools:text="R$ 243,99" />
 </androidx.constraintlayout.widget.ConstraintLayout>

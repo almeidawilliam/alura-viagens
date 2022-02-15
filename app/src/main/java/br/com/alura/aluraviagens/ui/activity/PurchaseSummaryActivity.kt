@@ -11,25 +11,45 @@ import java.math.BigDecimal
 
 class PurchaseSummaryActivity : AppCompatActivity() {
 
+    companion object {
+        private const val APPBAR_TITLE = "Resumo do pacote"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_purchase_summary)
-        title = "RESUMO DA COMPRA"
+        title = APPBAR_TITLE
 
         val packageHoliday = PackageHoliday("São Paulo", "sao_paulo_sp", 2, BigDecimal(243.99))
 
-        val placeView = findViewById<TextView>(R.id.activity_purchase_summary_place_name)
-        placeView.text = packageHoliday.place
+        showPlace(packageHoliday)
+        showAmount(packageHoliday)
+        showImage(packageHoliday)
+        showPeriod(packageHoliday)
 
-        val amountView = findViewById<TextView>(R.id.activity_purchase_summary_amount)
-        amountView.text = packageHoliday.formattedAmount()
+    }
 
+    private fun showPeriod(packageHoliday: PackageHoliday) =
+        findViewById<TextView>(R.id.activity_purchase_summary_date_period)
+            .apply {
+                this.text = getFormattedPeriod(packageHoliday.days)
+            }
+
+    private fun showImage(packageHoliday: PackageHoliday) {
         val imageView = findViewById<ImageView>(R.id.activity_purchase_summary_place_image)
         val drawable = br.com.alura.aluraviagens.util.getDrawable(this, packageHoliday.image)
         imageView.setImageDrawable(drawable)
-
-        val periodView = findViewById<TextView>(R.id.activity_purchase_summary_date_period)
-        periodView.text = getFormattedPeriod(packageHoliday.days)
-
     }
+
+    private fun showAmount(packageHoliday: PackageHoliday) =
+        findViewById<TextView>(R.id.activity_purchase_summary_amount)
+            .apply {
+                this.text = packageHoliday.formattedAmount()
+            }
+
+    private fun showPlace(packageHoliday: PackageHoliday) =
+        findViewById<TextView>(R.id.activity_purchase_summary_place_name)
+            .apply {
+                this.text = packageHoliday.place
+            }
 }
