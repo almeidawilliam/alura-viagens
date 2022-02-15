@@ -40,7 +40,7 @@
         tools:text="2 dias" />
 
     <TextView
-        android:id="@+id/activity_package_holiday_summary_days_range"
+        android:id="@+id/activity_package_holiday_summary_days_period"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -58,9 +58,9 @@
         android:textAlignment="textEnd"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/activity_package_holiday_summary_days_range"
+        app:layout_constraintBottom_toBottomOf="@id/activity_package_holiday_summary_days_period"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/activity_package_holiday_summary_days_range"
+        app:layout_constraintStart_toEndOf="@id/activity_package_holiday_summary_days_period"
         tools:text="R$ 243,99" />
 
     <TextView

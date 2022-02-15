@@ -2,15 +2,16 @@ package br.com.alura.aluraviagens.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.model.PackageHoliday
 import br.com.alura.aluraviagens.util.getDrawable
+import br.com.alura.aluraviagens.util.getFormattedPeriod
 import java.math.BigDecimal
-import java.text.SimpleDateFormat
-import java.util.*
 
 class PackageHolidaySummaryActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class PackageHolidaySummaryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_package_holiday_summary)
-        title = (APPBAR_TITLE)
+        title = APPBAR_TITLE
 
         val packageHoliday = PackageHoliday("São Paulo", "sao_paulo_sp", 2, BigDecimal(243.99))
 
@@ -30,7 +31,7 @@ class PackageHolidaySummaryActivity : AppCompatActivity() {
         showDays(packageHoliday)
         showAmount(packageHoliday)
         showDates(packageHoliday)
-//        configurePaymentButton()
+        configurePaymentButton()
         val intent = Intent(
             this@PackageHolidaySummaryActivity,
             PackageHolidayPaymentActivity::class.java
@@ -38,48 +39,41 @@ class PackageHolidaySummaryActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-//    private fun configurePaymentButton() {
-//        val view = findViewById<Button>(R.id.activity_package_holiday_summary_effectuate_payment_button)
-//        view.setOnClickListener {
-//                    View.OnClickListener {
-//                        val intent = Intent(
-//                            this@PackageHolidaySummaryActivity,
-//                            PackageHolidayPaymentActivity::class.java
-//                        )
-//                        startActivity(intent)
-//                    }
-//                }
-//            }
-
-
-    private fun showDates(packageHoliday: PackageHoliday) {
-        val brazilianFormat = SimpleDateFormat("dd/MM")
-        val departureDate = Calendar.getInstance()
-        val returnDate = Calendar.getInstance()
-        returnDate.add(Calendar.DATE, packageHoliday.days)
-        val formattedDepartureDate: String = brazilianFormat.format(departureDate.time)
-        val formattedReturnDate = brazilianFormat.format(returnDate.time)
-
-        findViewById<TextView>(R.id.activity_package_holiday_summary_days_range)
-            .apply {
-                this.text =
-                    "$formattedDepartureDate - $formattedReturnDate de ${returnDate.get(Calendar.YEAR)}"
+    private fun configurePaymentButton() {
+        val view =
+            findViewById<Button>(R.id.activity_package_holiday_summary_effectuate_payment_button)
+        view.setOnClickListener {
+            View.OnClickListener {
+                val intent = Intent(
+                    this@PackageHolidaySummaryActivity,
+                    PackageHolidayPaymentActivity::class.java
+                )
+                startActivity(intent)
             }
+        }
     }
 
-    private fun showAmount(packageHoliday: PackageHoliday) {
+    private fun showDates(packageHoliday: PackageHoliday) =
+        findViewById<TextView>(R.id.activity_package_holiday_summary_days_period)
+            .apply {
+                this.text =
+                    getFormattedPeriod(packageHoliday.days)
+            }
+
+
+    private fun showAmount(packageHoliday: PackageHoliday) =
         findViewById<TextView>(R.id.activity_package_holiday_summary_amount)
             .apply {
                 this.text = packageHoliday.formattedAmount()
             }
-    }
 
-    private fun showDays(packageHoliday: PackageHoliday) {
+
+    private fun showDays(packageHoliday: PackageHoliday) =
         findViewById<TextView>(R.id.activity_package_holiday_summary_days)
             .apply {
                 this.text = packageHoliday.formattedDays()
             }
-    }
+
 
     private fun showImage(packageHoliday: PackageHoliday) {
         val drawable = getDrawable(this, packageHoliday.image)
@@ -89,10 +83,9 @@ class PackageHolidaySummaryActivity : AppCompatActivity() {
             }
     }
 
-    private fun showPlace(packageHoliday: PackageHoliday) {
+    private fun showPlace(packageHoliday: PackageHoliday) =
         findViewById<TextView>(R.id.activity_package_holiday_summary_place)
             .apply {
                 this.text = packageHoliday.place
             }
-    }
 }
