@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="@id/activity_package_holiday_summary_amount" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/activity_package_holiday_summary_effectuate_payment_button"
+        android:id="@+id/activity_package_holiday_summary_proceed_payment_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

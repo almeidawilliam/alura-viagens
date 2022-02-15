@@ -2,7 +2,6 @@ package br.com.alura.aluraviagens.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -31,27 +30,21 @@ class PackageHolidaySummaryActivity : AppCompatActivity() {
         showDays(packageHoliday)
         showAmount(packageHoliday)
         showDates(packageHoliday)
-        configurePaymentButton()
-        val intent = Intent(
-            this@PackageHolidaySummaryActivity,
-            PackageHolidayPaymentActivity::class.java
-        )
-        startActivity(intent)
+        configureProceedPaymentButton()
     }
 
-    private fun configurePaymentButton() {
-        val view =
-            findViewById<Button>(R.id.activity_package_holiday_summary_effectuate_payment_button)
-        view.setOnClickListener {
-            View.OnClickListener {
-                val intent = Intent(
-                    this@PackageHolidaySummaryActivity,
-                    PackageHolidayPaymentActivity::class.java
-                )
-                startActivity(intent)
+    private fun configureProceedPaymentButton() =
+        findViewById<Button>(R.id.activity_package_holiday_summary_proceed_payment_button)
+            .apply {
+                this.setOnClickListener {
+                    startActivity(
+                        Intent(
+                            this@PackageHolidaySummaryActivity,
+                            PackageHolidayPaymentActivity::class.java
+                        )
+                    )
+                }
             }
-        }
-    }
 
     private fun showDates(packageHoliday: PackageHoliday) =
         findViewById<TextView>(R.id.activity_package_holiday_summary_days_period)
