@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.model.PackageHoliday
+import br.com.alura.aluraviagens.ui.activity.PackageHolidayActivityConstants.HOLIDAY_PACKAGE_KEY
 import br.com.alura.aluraviagens.util.getFormattedPeriod
 
 class PurchaseSummaryActivity : AppCompatActivity() {
@@ -18,10 +19,13 @@ class PurchaseSummaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_purchase_summary)
         title = APPBAR_TITLE
+        loadReceivedHolidayPackage()
+    }
 
-        if (intent.hasExtra("packageHoliday")) {
+    private fun loadReceivedHolidayPackage() {
+        if (intent.hasExtra(HOLIDAY_PACKAGE_KEY)) {
             val packageHoliday: PackageHoliday =
-                intent.getSerializableExtra("packageHoliday") as PackageHoliday
+                intent.getSerializableExtra(HOLIDAY_PACKAGE_KEY) as PackageHoliday
             showPlace(packageHoliday)
             showAmount(packageHoliday)
             showImage(packageHoliday)

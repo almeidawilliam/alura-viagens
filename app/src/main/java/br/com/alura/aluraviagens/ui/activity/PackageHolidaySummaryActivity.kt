@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.model.PackageHoliday
+import br.com.alura.aluraviagens.ui.activity.PackageHolidayActivityConstants.HOLIDAY_PACKAGE_KEY
 import br.com.alura.aluraviagens.util.getDrawable
 import br.com.alura.aluraviagens.util.getFormattedPeriod
 
@@ -21,34 +22,44 @@ class PackageHolidaySummaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_package_holiday_summary)
         title = APPBAR_TITLE
+        loadReceivedHolidayPackage()
+    }
 
-        if (intent.hasExtra("packageHoliday")) {
+    private fun loadReceivedHolidayPackage() {
+        if (intent.hasExtra(HOLIDAY_PACKAGE_KEY)) {
             val packageHoliday: PackageHoliday =
-                intent.getSerializableExtra("packageHoliday") as PackageHoliday
-            showPlace(packageHoliday)
-            showImage(packageHoliday)
-            showDays(packageHoliday)
-            showAmount(packageHoliday)
-            showDates(packageHoliday)
+                intent.getSerializableExtra(HOLIDAY_PACKAGE_KEY) as PackageHoliday
+            initializeViews(packageHoliday)
             configureProceedPaymentButton(packageHoliday)
         }
+    }
+
+    private fun initializeViews(packageHoliday: PackageHoliday) {
+        showPlace(packageHoliday)
+        showImage(packageHoliday)
+        showDays(packageHoliday)
+        showAmount(packageHoliday)
+        showDates(packageHoliday)
     }
 
     private fun configureProceedPaymentButton(packageHoliday: PackageHoliday) =
         findViewById<Button>(R.id.activity_package_holiday_summary_proceed_payment_button)
             .apply {
                 this.setOnClickListener {
-
-                    val intent = Intent(
-                        this@PackageHolidaySummaryActivity,
-                        PackageHolidayPaymentActivity::class.java
-                    ).apply {
-                        this.putExtra("packageHoliday", packageHoliday)
-                    }
-
-                    startActivity(intent)
+                    moveToPackageHolidayPayment(packageHoliday)
                 }
             }
+
+    private fun moveToPackageHolidayPayment(packageHoliday: PackageHoliday) {
+        val intent = Intent(
+            this@PackageHolidaySummaryActivity,
+            PackageHolidayPaymentActivity::class.java
+        ).apply {
+            this.putExtra(HOLIDAY_PACKAGE_KEY, packageHoliday)
+        }
+
+        startActivity(intent)
+    }
 
     private fun showDates(packageHoliday: PackageHoliday) =
         findViewById<TextView>(R.id.activity_package_holiday_summary_days_period)

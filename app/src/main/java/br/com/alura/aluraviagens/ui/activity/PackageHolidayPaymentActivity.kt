@@ -7,20 +7,25 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.model.PackageHoliday
+import br.com.alura.aluraviagens.ui.activity.PackageHolidayActivityConstants.HOLIDAY_PACKAGE_KEY
 
 class PackageHolidayPaymentActivity : AppCompatActivity() {
 
     companion object {
-        private const val APPBAR_TITLE = "PAGAMENTO"
+        private const val APPBAR_TITLE = "Pagamento"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_package_holiday_payment)
         title = APPBAR_TITLE
-        if (intent.hasExtra("packageHoliday")) {
+        loadReceivedHolidayPackage()
+    }
+
+    private fun loadReceivedHolidayPackage() {
+        if (intent.hasExtra(HOLIDAY_PACKAGE_KEY)) {
             val packageHoliday: PackageHoliday =
-                intent.getSerializableExtra("packageHoliday") as PackageHoliday
+                intent.getSerializableExtra(HOLIDAY_PACKAGE_KEY) as PackageHoliday
             showAmount(packageHoliday)
             configureEffectuatePaymentButton(packageHoliday)
         }
@@ -30,17 +35,20 @@ class PackageHolidayPaymentActivity : AppCompatActivity() {
         findViewById<Button>(R.id.activity_package_holiday_payment_button_proceed_payment)
             .apply {
                 this.setOnClickListener {
-
-                    val intent = Intent(
-                        this@PackageHolidayPaymentActivity,
-                        PurchaseSummaryActivity::class.java
-                    ).apply {
-                        this.putExtra("packageHoliday", packageHoliday)
-                    }
-
-                    startActivity(intent)
+                    moveToPurchaseSummary(packageHoliday)
                 }
             }
+
+    private fun moveToPurchaseSummary(packageHoliday: PackageHoliday) {
+        val intent = Intent(
+            this@PackageHolidayPaymentActivity,
+            PurchaseSummaryActivity::class.java
+        ).apply {
+            this.putExtra(HOLIDAY_PACKAGE_KEY, packageHoliday)
+        }
+
+        startActivity(intent)
+    }
 
     private fun showAmount(packageHoliday: PackageHoliday) {
         val amount = findViewById<TextView>(R.id.activity_package_holiday_payment_amount)
