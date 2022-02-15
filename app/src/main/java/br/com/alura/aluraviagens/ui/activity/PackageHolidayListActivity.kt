@@ -6,6 +6,7 @@ import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.dao.PackageHolidayDAO
+import br.com.alura.aluraviagens.model.PackageHoliday
 import br.com.alura.aluraviagens.ui.adapter.PackageHolidayListAdapter
 
 class PackageHolidayListActivity : AppCompatActivity() {
@@ -33,13 +34,18 @@ class PackageHolidayListActivity : AppCompatActivity() {
                     )
             }
             .also {
-                it.setOnItemClickListener { _, _, _, _ ->
-                    startActivity(
-                        Intent(
-                            this@PackageHolidayListActivity,
-                            PackageHolidaySummaryActivity::class.java
-                        )
-                    )
+                it.setOnItemClickListener { _, _, position, _ ->
+                    val selectedPackageHoliday: PackageHoliday =
+                        packageHolidayDAO.list()[position]
+
+                    val intent = Intent(
+                        this@PackageHolidayListActivity,
+                        PackageHolidaySummaryActivity::class.java
+                    ).apply {
+                        this.putExtra("packageHoliday", selectedPackageHoliday)
+                    }
+
+                    startActivity(intent)
                 }
             }
 }

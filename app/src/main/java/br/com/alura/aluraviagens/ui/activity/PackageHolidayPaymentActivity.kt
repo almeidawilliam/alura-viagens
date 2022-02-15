@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.model.PackageHoliday
-import java.math.BigDecimal
 
 class PackageHolidayPaymentActivity : AppCompatActivity() {
 
@@ -19,21 +18,27 @@ class PackageHolidayPaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_package_holiday_payment)
         title = APPBAR_TITLE
-        val packageHoliday = PackageHoliday("São Paulo", "sao_paulo_sp", 2, BigDecimal(243.99))
-        showAmount(packageHoliday)
-        configureEffectuatePaymentButton()
+        if (intent.hasExtra("packageHoliday")) {
+            val packageHoliday: PackageHoliday =
+                intent.getSerializableExtra("packageHoliday") as PackageHoliday
+            showAmount(packageHoliday)
+            configureEffectuatePaymentButton(packageHoliday)
+        }
     }
 
-    private fun configureEffectuatePaymentButton() =
+    private fun configureEffectuatePaymentButton(packageHoliday: PackageHoliday) =
         findViewById<Button>(R.id.activity_package_holiday_payment_button_proceed_payment)
             .apply {
                 this.setOnClickListener {
-                    startActivity(
-                        Intent(
-                            this@PackageHolidayPaymentActivity,
-                            PurchaseSummaryActivity::class.java
-                        )
-                    )
+
+                    val intent = Intent(
+                        this@PackageHolidayPaymentActivity,
+                        PurchaseSummaryActivity::class.java
+                    ).apply {
+                        this.putExtra("packageHoliday", packageHoliday)
+                    }
+
+                    startActivity(intent)
                 }
             }
 

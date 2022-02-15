@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.model.PackageHoliday
 import br.com.alura.aluraviagens.util.getFormattedPeriod
-import java.math.BigDecimal
 
 class PurchaseSummaryActivity : AppCompatActivity() {
 
@@ -20,13 +19,14 @@ class PurchaseSummaryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_purchase_summary)
         title = APPBAR_TITLE
 
-        val packageHoliday = PackageHoliday("São Paulo", "sao_paulo_sp", 2, BigDecimal(243.99))
-
-        showPlace(packageHoliday)
-        showAmount(packageHoliday)
-        showImage(packageHoliday)
-        showPeriod(packageHoliday)
-
+        if (intent.hasExtra("packageHoliday")) {
+            val packageHoliday: PackageHoliday =
+                intent.getSerializableExtra("packageHoliday") as PackageHoliday
+            showPlace(packageHoliday)
+            showAmount(packageHoliday)
+            showImage(packageHoliday)
+            showPeriod(packageHoliday)
+        }
     }
 
     private fun showPeriod(packageHoliday: PackageHoliday) =

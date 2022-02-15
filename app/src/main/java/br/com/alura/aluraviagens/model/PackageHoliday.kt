@@ -1,5 +1,6 @@
 package br.com.alura.aluraviagens.model
 
+import java.io.Serializable
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.util.*
@@ -9,7 +10,7 @@ class PackageHoliday(
     val image: String,
     val days: Int,
     val amount: BigDecimal,
-) {
+): Serializable {
     fun formattedDays(): String =
         if (days > 1)
             "$days dias"

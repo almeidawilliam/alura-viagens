@@ -10,7 +10,6 @@ import br.com.alura.aluraviagens.R
 import br.com.alura.aluraviagens.model.PackageHoliday
 import br.com.alura.aluraviagens.util.getDrawable
 import br.com.alura.aluraviagens.util.getFormattedPeriod
-import java.math.BigDecimal
 
 class PackageHolidaySummaryActivity : AppCompatActivity() {
 
@@ -23,26 +22,31 @@ class PackageHolidaySummaryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_package_holiday_summary)
         title = APPBAR_TITLE
 
-        val packageHoliday = PackageHoliday("São Paulo", "sao_paulo_sp", 2, BigDecimal(243.99))
-
-        showPlace(packageHoliday)
-        showImage(packageHoliday)
-        showDays(packageHoliday)
-        showAmount(packageHoliday)
-        showDates(packageHoliday)
-        configureProceedPaymentButton()
+        if (intent.hasExtra("packageHoliday")) {
+            val packageHoliday: PackageHoliday =
+                intent.getSerializableExtra("packageHoliday") as PackageHoliday
+            showPlace(packageHoliday)
+            showImage(packageHoliday)
+            showDays(packageHoliday)
+            showAmount(packageHoliday)
+            showDates(packageHoliday)
+            configureProceedPaymentButton(packageHoliday)
+        }
     }
 
-    private fun configureProceedPaymentButton() =
+    private fun configureProceedPaymentButton(packageHoliday: PackageHoliday) =
         findViewById<Button>(R.id.activity_package_holiday_summary_proceed_payment_button)
             .apply {
                 this.setOnClickListener {
-                    startActivity(
-                        Intent(
-                            this@PackageHolidaySummaryActivity,
-                            PackageHolidayPaymentActivity::class.java
-                        )
-                    )
+
+                    val intent = Intent(
+                        this@PackageHolidaySummaryActivity,
+                        PackageHolidayPaymentActivity::class.java
+                    ).apply {
+                        this.putExtra("packageHoliday", packageHoliday)
+                    }
+
+                    startActivity(intent)
                 }
             }
 
